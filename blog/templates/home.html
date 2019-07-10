@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MAGICAL :: The witchcraft</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo|Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+
+    <style>
+        *{ box-sizing: border-box;}
+        body {margin:0;}
+        a{text-decoration: none;}
+        a:link, a:visited, a:active {color: inherit;}
+
+        header{color:aqua; background: rgb(187, 149, 218);font-family: 'Song Myung', serif; text-align: center;}
+        nav{background: pink; padding: 10px;}
+        aside{background: lightgray;}
+        footer{background: rgb(153, 178, 231);}
+        h1{font-family: 'Song Myung', serif; text-align: center;}
+        p{font-family:  'Nanum Myeongjo', serif;  line-height: 20px;
+            display: flex;
+}
+        #main{
+            display:flex;
+        }
+        .aside{
+            font-family:  'Nanum Myeongjo', serif;
+        }
+
+
+        .content{
+            flex: 70%;
+            padding: 40px;
+        }
+
+        .aside{
+            flex:30;
+            padding: 40px;
+        }
+
+        .header{
+            padding: 30px;
+            text-align: center;
+        }
+
+        .navbar a{
+            padding: 10px;
+            margin-right: 20px;
+        }
+        .navbar a:hover{
+            color: black;
+            background-color: aqua;
+        }
+        footer{
+            padding: 20px;
+            text-align: center;
+        }
+        html,body{
+            height: 100;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>welcome to magical world.</h1>
+    </header>
+    <nav class="navbar ">
+        <a href="">Home</a>
+        <a href="">History</a>
+        <a href="">News</a>
+    </nav>
+
+    <div id="main">
+        <article class="content">
+            <h1>What is magic?</h1>
+            <h3> The reason that you can come to this webpage ...</h3>
+            <p>마법은 오래전부터 존재해온 것으로 오컬트, 무속신앙, 위카, 헤르메스 등으로 현실세계에서도 이미 많이 전파되어 왔습니다. 
+                하지만 마법의 특성상 과학과 양극된 성질을 지니기 때문에 증명을 신용하는 인간들은 마법을 미신으로 인식하고 적대시 
+                해왔습니다. 그러나 존재하는 힘을 부인한다 하더라도 마법은 언제나 특정 인간들에게 실존해 왔음으로 우리는 역사적으로 
+                많은 마법과 마녀, 그리고 마법사와 함께해 왔습니다. 우리는 이제 마법사를 위한 하나의 커뮤니티를 만들고자 합니다.
+                이 홈페이지는 과학의 힘을 빌렸으나 과학이라 함은 동시에 결함도 지니고 있기에 운영자는 마법의 성향을 지닌 이들만이 
+                방문하도록 홈페이지 자체에 결계마법을 걸어놓았습니다. 그러므로 홈페이지를 방문한 당신은 마법 성향을 지닌 마법사일
+                가능성이 높습니다. 자, 이제 때가 되었습니다. 우리와 함께합시다.</p>
+                <br>
+                <br>
+                {% for blog in blogs.all %}
+                <div class="container">
+                    <h1>{{ blog.title }}</h1>
+                    <p>{{ blog.pub_date }}</p>
+                    <p>{{ blog.summary }}
+                        <a href="{% url 'detail' blog.id %}">---more</a>
+                    </p>
+                </div>
+            {% endfor %}
+        </article>
+        <aside class="aside">
+            <h1>Sign in</h1>
+            <form action="my-app" method="get">
+                <div class="sign">
+                    <label for="userid">아이디: </label>
+                    <input type="text" name="userid" placeholder="아이디를 입력하세요">
+                </div>
+                
+                <div>
+                <label for="password">비밀번호: </label>
+                <input type="password" name="password" placeholder="비밀번호를 입력하세요">
+                </div>
+                <div>
+                    <label for="gender">성별: </label>
+                    <select name="gender" id="gender">
+                        <option value="female">여성</option>
+                        <option value="male">남성</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="job">직업: </label>
+                    <select name="job" id="job">
+                        <option value="student">학생</option>
+                        <option value="librarian">사서</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="introduce">간단한 자기소개: </label>
+                    <textarea name="introduce" id="introduce" placeholder="자기소개를 입력해주세요." cols="30" rows="5"></textarea>
+                    
+                </div>
+                <button type="submit">submit</button>
+                <button type="reset">reset</button>
+                
+            </form>
+            <h1>Advertise </h1>
+            <br>
+            <h4> 마법부에서 아즈카반의 죄수를 찾고 있습니다. 범인의 행방을 아시는 분은 즉시 마법부로 연락 바랍니다.</h4>
+            <br>
+            <h4>마법부 지능범죄수사대) 3749274037-3793749571</h4>
+        </aside>
+    </div>
+    <footer>Division of Magic</footer>
+</body>
+</html>
